@@ -1,8 +1,5 @@
 from django.http import HttpResponse, JsonResponse
 import json
 
+from django.shortcuts import render
 
-def home_page(request):
-    print("Home page is requested")
-    response_data = {"friends":["Pankaj", "Ankit", "Ravi", "Uttam"]}
-    return JsonResponse(response_data)

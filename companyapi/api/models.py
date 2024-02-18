@@ -7,13 +7,28 @@ class Company(models.Model):
     location = models.CharField(max_length=50)
     about = models.TextField()
     type = models.CharField(max_length=100,
-                             choices=(("IT","IT"),
-                                      ("Non-IT","Non-IT"),
-                                      ("Agriculture","Agriculture")
+                             choices=(("IT", "IT"),
+                                      ("Non-IT", "Non-IT"),
+                                      ("Agriculture", "Agriculture"),
+                                      ("Pharma", "Pharma")
                                       ))
     added_date = models.DateField(auto_now=True)
     active = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.name
+
+
 # Employee Model
 class Employee(models.Model):
-    pass
+    name = models.CharField(max_length=100)
+    email = models.CharField(max_length=50)
+    address = models.CharField(max_length=200)
+    phone = models.CharField(max_length=10)
+    about = models.TextField(max_length = 200)
+    position= models.CharField(max_length=50, 
+                               choices=(('Manager', 'Manager'),
+                                        ('Software Developer', 'Software Developer'),
+                                        ('Project Leader', 'Project Leader')
+                                        ))
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
