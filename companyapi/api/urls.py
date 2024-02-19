@@ -11,7 +11,7 @@ router.register(r'employee', EmployeeViewSet)
 
 urlpatterns = [
     path('', include(router.urls)), 
-    path('home', home_page),
+    path('home/', home_page),
 ]
 
 

@@ -32,3 +32,6 @@ class Employee(models.Model):
                                         ('Project Leader', 'Project Leader')
                                         ))
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
