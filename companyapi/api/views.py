@@ -16,7 +16,7 @@ class CompanyViewSet(viewsets.ModelViewSet):
     # for custom api's
     # 
     @action(detail=True, methods=['get'])
-    def employees(self, request, pk=None):
+    def employees(self, request, pk=10):
         try:
             company = Company.objects.get(pk=pk)
             emps = Employee.objects.filter(company=company)
@@ -27,6 +27,7 @@ class CompanyViewSet(viewsets.ModelViewSet):
             return Response({
                 'message': "Error: Company might not exists !!! "
             })
+        
 
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
